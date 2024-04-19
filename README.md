@@ -92,7 +92,7 @@ Geth, short for "Go Ethereum," is one of the most popular implementations of an 
 img4
 
 
-# SECURITY AUDITS FOR SMART CONTRACT USING SLITHER
+# Security Audits For Smart Contract Using Slither
 
 **Slither:** An Solidity static analysis framework. Through its printers, it can map method visibility and modifiers, state variables that are read and written, identify calls, and print the inheritance graph of a smart contract.
 
