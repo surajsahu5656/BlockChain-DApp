@@ -89,7 +89,11 @@ Geth, short for "Go Ethereum," is one of the most popular implementations of an 
 
           docker run -it --rm -v $PWD:/data devopstestlab/solgraph 
 
-img4
+![4](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/a164b96a-4dd6-4dc1-a4f7-65fbeda8b49a)
+
+
+![5](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/0fc1f9b7-c11b-4ef2-bb6f-282c860f61f6)
+
 
 
 # Security Audits For Smart Contract Using Slither
@@ -122,7 +126,7 @@ img4
 
        docker run -it --rm -v $PWD:/data trailofbits/eth-security-toolbox
 
-img6
+img7
 
 6.)**Open another terminal and Run the command to obtain container id:**
 
@@ -136,13 +140,13 @@ img6
 
        slither filename.sol
     
-img7
+img8
 
 9.)**And then Run another command in the first terminal:**
 
       slither-check-erc filename.sol <contract name in code>
     
-img8
+img9
 
 
 
