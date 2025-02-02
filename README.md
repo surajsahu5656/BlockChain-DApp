@@ -1,348 +1,208 @@
-# Origin
+# **Blockchain and Cryptocurrency Guide**
+
+## **Introduction**
+### Created by [Satoshi Nakamoto](https://en.wikipedia.org/wiki/Satoshi_Nakamoto) in 2008
+
+---
+## **Text Encryption Overview**
+- **Plain Text** → No encryption
+- **Encoding** → Example: Base64
+- **Hashing** → Example: SHA-256
+- **Encryption** → Types:
+  - **Symmetric Encryption**
+  - **Asymmetric Encryption**
+
+### **Types of Keys**
+1. **Public Key** - Used for encryption.
+2. **Private Key** - Used for asymmetric encryption (kept secret).
+
+### **Symmetric Encryption**
+- Uses the same public key for both encryption and decryption.
+- The key is shared between the sender and receiver.
+
+### **Asymmetric Encryption**
+- Uses a public key for encryption and a private key for decryption.
+- The public key can be shared with anyone, but the private key must remain secret.
+
+---
+## **Bitcoin Wallet**
+- A wallet consists of a **Private/Public Key Pair**.
+- **Private Key** - A secret number.
+- **Public Key** - A publicly known number.
+
+### **Bitcoin Address**
+- A public key corresponding to a private key.
+- Works like an email address to receive payments.
+
+### **Transactions**
+- **Inputs** → Amount of bitcoins sent from one address to another.
+- **Outputs** → Amount of bitcoins received at another address.
+- **Signature** → Proof of authorization to spend funds.
+
+### **Mining**
+- The process of verifying transactions and adding them to the blockchain.
+- Miners receive rewards for finding valid blocks.
+- **Difficulty** is adjusted every 2 weeks.
+
+---
+## **What is Blockchain?**
+A **blockchain** is a decentralized, digital ledger technology that records transactions across a network of computers. Each transaction is grouped into a **block**, forming a chronological and immutable chain.
+
+### **Features of Blockchain:**
+✅ **Decentralized** - No single entity controls the network.
+✅ **Secure & Tamper-proof** - Uses cryptographic hashing.
+✅ **Transparent** - Publicly verifiable transactions.
+✅ **Applications** - Cryptocurrencies, supply chain, voting systems, and smart contracts.
+
+---
+## **MetaMask**
+- A cryptocurrency wallet & browser extension for **Ethereum** blockchain.
+- Enables interaction with **decentralized applications (dApps)**.
+- Supports **Ether (ETH), tokens, and NFTs**.
+
+---
+## **Geth (Go Ethereum)**
+Geth is a command-line interface (CLI) for running an **Ethereum node**.
+
+### **How to Create a Private Blockchain Network**
+1) **Install Geth** on your system.
+2) **Create a folder** (e.g., `PrivateEthereum`).
+3) **Make a `genesis.json` file** and save it inside the folder.
+4) **Execute the genesis file**:
+   ```sh
+   geth --datadir ./data init ./genesis.json
+   ```
+5) **Initialize the private network**:
+   ```sh
+   geth --datadir .\data\ --nodiscover
+   ```
+
+### **How to Connect to Ethereum Mainnet**
+Run the following command:
+```sh
+geth attach ipc://./pipe/geth.ipc
+```
+
+### **How to Create an Account on Ethereum Mainnet**
+Run:
+```sh
+personal.newAccount()
+```
+Then, create your password.
+
+### **How to Mine on Ethereum Private Network**
+1) Set the miner account:
+   ```sh
+   miner.setEtherbase(eth.accounts[0])
+   ```
+2) Start mining:
+   ```sh
+   miner.start(1)
+   ```
+3) Check miner balance:
+   ```sh
+   eth.getBalance(eth.accounts[0])
+   ```
+
+---
+## **How to Visualize Solidity Smart Contracts**
+1) Install **Docker** on your OS.
+2) Pull the **Solgraph** Docker image:
+   ```sh
+   sudo docker pull devopstestlab/solgraph
+   ```
+3) Create a directory:
+   ```sh
+   mkdir data && cd data
+   ```
+4) Write the smart contract and save it as `MyContract.sol`.
+5) Run:
+   ```sh
+   docker run -it --rm -v $PWD:/data devopstestlab/solgraph
+   ```
+
+---
+## **Security Audits for Smart Contracts**
+
+### **Using Slither**
+1) Pull Slither Docker image:
+   ```sh
+   docker pull trailofbits/eth-security-toolbox
+   ```
+2) Create an audit directory:
+   ```sh
+   mkdir audit && cd audit
+   ```
+3) Write your smart contract (`SimpleStorage.sol`).
+4) Run:
+   ```sh
+   docker run -it --rm -v $PWD:/data trailofbits/eth-security-toolbox
+   ```
+5) Open another terminal and get the container ID:
+   ```sh
+   sudo docker container ls
+   ```
+6) Copy your file inside the container:
+   ```sh
+   sudo docker cp $(pwd)/SimpleStorage.sol "container-id":/home/ethsec
+   ```
+7) Analyze the contract:
+   ```sh
+   slither SimpleStorage.sol
+   ```
+
+### **Using Mythril**
+1) Pull Mythril Docker image:
+   ```sh
+   sudo docker pull mythril/myth
+   ```
+2) Create an audit directory:
+   ```sh
+   mkdir audits2 && cd audits2
+   ```
+3) Write your smart contract (`Ballot.sol`).
+4) Analyze it:
+   ```sh
+   myth analyze Ballot.sol
+   ```
+
+### **Using Surya**
+1) Install npm:
+   ```sh
+   sudo apt install npm
+   ```
+2) Install Surya:
+   ```sh
+   sudo npm install -g surya
+   ```
+3) Write your smart contract (`Storage.sol`).
+4) Parse it:
+   ```sh
+   surya parse Storage.sol
+   ```
+5) Flatten the contract:
+   ```sh
+   surya flatten Storage.sol
+   ```
+
+### **Using Manticore**
+1) Pull the Manticore Docker image:
+   ```sh
+   sudo docker pull trailofbits/manticore
+   ```
+2) Create an audit directory:
+   ```sh
+   mkdir audits2 && cd audits2
+   ```
+3) Write your smart contract (`Storage.sol`).
+4) Run Manticore:
+   ```sh
+   manticore Storage.sol
+   ```
+
+---
+## **Conclusion**
+This guide provides an overview of blockchain, cryptocurrency, encryption, Ethereum networks, and security auditing tools for smart contracts. By following these steps, developers can enhance their knowledge of blockchain security and create robust decentralized applications.
+
+🚀 **Stay secure and keep innovating in blockchain technology!**
 
-## Created by [SATOSHI NAKAMOTO]() in 2008
-
-# Text Encryption
-Plain Text  --> No Encryption
-Encoding --> Example: base64
-Hashing --> Example: SHA-256
-Encryption --> Types: Symmmetric Encryption , Aysmmetric Encryption
-
-# Types of Keys
-1. Public Key (Used for encryption)
-2. Private Key (Used for Asmmetric Encryption)
-
-## Symmetric Encryption
-Uses Public Key for both Encryption and Decryption
-Key is shared between the sender and receiver
-
-## Asymmetric Encrytion
-Uses Public key for Encryption and Private Key for Decryption
-Public Key can be Shared with Anyone, but Private Key should remain secret
-
-# Bitcoin Wallet
-Private/Public Key Pair
-Private Key - Secret Number
-Public Key - Publicly Known Number
-
-# Bitcoin Address
-A public key that corresponds to a particular private key. It's like an email address. The bitcoins sent to this address will appear as incoming payments.
-
-# Transactions
-Inputs -> Amount of bitcoins being sent from one address to another
-Outputs -> Amount of bitcoins being sent from one address to another
-Signature -> Proof that you are authorized to spend the funds
-
-# Mining
-The process of verifying transactions and adding them to the blockchain
-Reward given to miner who found valid block
-Difficulty adjusted every 2 weeks
-
-
-
-
-# Blockchain
-A blockchain is a decentralized digital ledger technology that records transactions across a network of computers. Each transaction is grouped into a "block," which is then added to a chain of other blocks, forming a chronological and immutable record of all transactions. This decentralized nature means that no single entity has control over the entire blockchain, making it resistant to tampering and fraud.
-
-Blockchain technology enables secure and transparent peer-to-peer transactions without the need for intermediaries, such as banks or financial institutions. It is most commonly associated with cryptocurrencies like Bitcoin, but its applications extend beyond finance to areas such as supply chain management, voting systems, and smart contracts.
-
-
-
-
-# MetaMask
-MetaMask is a cryptocurrency wallet and browser extension that allows users to interact with decentralized applications (dApps) on the Ethereum blockchain. It serves as a bridge between your web browser and the Ethereum blockchain, enabling you to manage your Ethereum-based assets, such as Ether (ETH), tokens, and NFTs (non-fungible tokens).
-
-![1](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/c4a95903-9f6a-4c3a-829b-e6206276cd42)
-
-
-
-
-# Geth
-Geth, short for "Go Ethereum," is one of the most popular implementations of an Ethereum node software. It is written in the Go programming language and serves as a command-line interface (CLI) for running an Ethereum node on a computer or server.
-
-
-
-
-# How To Make A Private Blockchain Network
-
-1) Install Geth on Your System.
-   
-2) Create a Folder (i.e Private Ethereum).
-   
-3) Make a genesis.json file for the gensis block and save into that folder.
-
-<img width="233" alt="2" src="https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/7c4f0694-ac03-4d93-b6ea-50de61f3bfd8">
-
-4) Execute the genesis file by run the commands on terminal, given below.
-   
-         geth --datadir ./data init ./genesis.json
-
-5) And then Initialize the private network by run command :
-    
-         geth --datadir .\data\ --nodiscover
-
-
-
-
-# How To Connect With Ethereium Mainnet
-**On cmd run command :** 
-
-       geth attach ipc://./pipe/geth.ipc 
-
-
-
-
-# How To Create Account On The Ethereum Mainnet
-**On cmd run command:**   
-
-        personal.newAccount()
-
-**And then create your password.**
-
-
-
-
-# How To Mine On The Ethereum Private Network
-**After creating account , run the following the commands ;**
-
-          miner.setEtherbase(eth.accounts[0])
-
-          miner.start(1)
-
-**And then miner balanced can be checked by run the following commmand;**
-
-          eth.getBalance(eth.accounts[0])
-
-
-
-
-# How To Visualize Solidity Smart Contracts
-
-1.) **Install the docker on OS.**
-
-2.) **Pull the docker image for solgraph by run this command on terminal :**
-
-          sudo docker pull devopstestlab/solgraph
-
-**Solgraph:** A tool to generate a DOT graph that visualises the function control flow of a Solidity contract and highlights potential security vulnerabilities.
-
-3.) **Make a directory :** 
-
-           mkdir data
-           
-4.) **Change the directory :** 
-
-           cd data
-           
-5.) **Run the command :** 
-
-           vim -vi
-           
-**And then write the smart contract and save the contract file with .sol extension.(i.e for example Mycontract.sol)**
-
-![3](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/cd0e4645-fa41-4f7b-bff0-a38feeeda85d)
-
-6.) **Then run the command :** 
-
-          docker run -it --rm -v $PWD:/data devopstestlab/solgraph 
-
-![4](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/a164b96a-4dd6-4dc1-a4f7-65fbeda8b49a)
-
-![5](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/0fc1f9b7-c11b-4ef2-bb6f-282c860f61f6)
-
-
-
-
-
-# Security Audits For Smart Contract Using Slither
-
-**Slither:** An Solidity static analysis framework. Through its printers, it can map method visibility and modifiers, state variables that are read and written, identify calls, and print the inheritance graph of a smart contract.
-
-1.) **Pull the docker image for slither by run this command on terminal :**
-
-            docker pull trailofbits/eth-security-toolbox
-      
-2.) **Make a directory :** 
-
-           mkdir audit
-           
-3.) **Change the directory :** 
-
-           cd audit
-           
-4.) **Run the command :** 
-
-           vim -vi
-           
-**And then write the smart contract and save the contract file with .sol extension.(for example SimpleStorage.sol)**
-
-![5](https://github.com/surajsahu5656/SEC-BlockChain-Sem2/assets/122232215/4d8332a2-c2a4-490e-99ea-3be0a1312d1e)
-
-
-5.) **Then run the command :** 
-
-       docker run -it --rm -v $PWD:/data trailofbits/eth-security-toolbox
-
-![7](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/91377970-7d26-45c5-904d-a0723a18bc30)
-
-
-6.)**Open another terminal and Run the command to obtain container id:**
-
-        sudo docker container ls
-   
-7.)**And then Run the command:**
-
-        sudo docker cp $(pwd)/filename.sol “containner-id”:/home/ethsec
-
-8.)**Run the command in the first terminal:**
-
-       slither filename.sol
-    
-![8](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/afb54acf-b7e9-4b9c-8e09-7af892fc1ff7)
-
-
-9.)**And then Run another command in the first terminal:**
-
-      slither-check-erc filename.sol <contract name in code>
-    
-![9](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/0581412c-9659-4121-961a-98d1b8868786)
-
-
-
-
-# Security audits for smart contract using Mythril:
-
-1) **pull the docker image for Mythril by run command**
-
-      sudo docker pull mythril/myth
-   
-2) **make a directory**
-   
-      mkdir audits2
-   
-3) **change the directory**
-   
-      cd audits2
-   
-4) **run the command**
-   
-      vim -vi
-   
-5) **And then write the smart contract and save the contract file with .sol extension.(for example Ballot.sol)**
-
-![10](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/f9e39cb4-4bd4-41b2-9dce-8f4bde061d91)
-![11](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/a80a8907-3c43-4ddb-b5fb-c13123cf556e)
-![12](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/808be312-aa42-4779-84e6-94095e3e53a6)
-
-
-6) **To analyse the smart contract run the command**
-
-        myth analyze Ballot.sol
-
-![13](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/0395d246-b319-42b3-8511-7533a0dc64a9)
-
-
-
-
-# Security audits for smart contract using Surya:
-
-1) **install npm by run the command**
-   
-      sudo apt install npm
-   
-2) **install surya**
-   
-     sudo npm install -g surya
-
-3) **make a directory**
-   
-     mkdir audits2
-
-4) **change the directory**
-   
-     cd audits2
-
-5) **run command**
-    
-     vim -vi
-
-6) **And then write the smart contract and save the contract file with .sol extension.(for example 
-   Storage.sol)**
-
-   ![14](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/a9ceac52-31ca-4e70-ae4d-a054f8ca4b8b)
-
-
-7) **Then run the command**
-   
-      surya parse Storage.sol
-
-**Parse :**  The parse command outputs a treefied AST object coming from the parser.
-
-![15](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/5223a914-c409-4c25-a9b9-a31720b4b303)
-![16](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/8e4e13c7-c7ec-4534-b412-33632520e480)
-![17](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/7db1fdea-e82e-4eeb-b026-b7cb97672306)
-
-
-8) **Then run another command**
-   
-       surya flatten Storage.sol
-   
-**Flatten :** The flatten command outputs a flattened version of the source code, with all import statements replaced by the corresponding source code. Import statements that reference a file that has already been imported, will simply be commented out.
-
-![18](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/5cfe5d5d-a27a-4057-b867-1e4f6e016ce9)
-
-
-
-
-# Security audits for solidity smart contract using manticore:
-
-1) **pull the docker image for manticore**
-
-         sudo docker pull trailofbits/manticore
-
-![19](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/ca84141f-5a7e-4897-83f5-c54339ccfc44)
-
-
-2) **make a directory**
-   
-      mkdir audits2
-   
-3) **change the directory**
-   
-      cd audits2
-   
-4) **run the command**
-   
-      vim -vi
-   
-5) **And then write the smart contract and save the contract file with .sol extension.(for example Storage.sol)**
-
-![20](https://github.com/surajsahu5656/Sem2_SEC_BlockChain/assets/122232215/4ae37d42-afa7-4884-9cf7-287a0db5613c)
-
-
-6) **Then run command**
-   
-      manticore Storage.sol
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
